@@ -15,7 +15,7 @@ document.addEventListener('keypress', (event) => {
       play_sound("china");
   }
   if (keyCode === 'Digit4') {
-    play_sound("Another Banger");
+    play_sound("Banger");
   }
   if (keyCode === 'Digit5') {
     play_sound("Ruh Roh Raggy");
