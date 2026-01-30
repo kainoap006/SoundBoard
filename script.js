@@ -1,7 +1,32 @@
+let audioCurrentlyPlaying;
+
 function play_sound(clicked_id) {
-    var audio = new Audio("sounds/" + clicked_id + ".mp3");
-    audio.play();
-  }
+    if (audioCurrentlyPlaying != null) {
+      audioCurrentlyPlaying.pause();
+      audioCurrentlyPlaying.currentTime = 0;
+    }
+    audioCurrentlyPlaying = new Audio("sounds/" + clicked_id + ".mp3");
+    audioCurrentlyPlaying.play();
+}
+
+let tempo;
+let previousTime = new Date();;
+
+function find_tempo(clicked_id) {
+    const now = new Date();
+    const timeDifference = now - previousTime;
+    if (timeDifference < 1000) {
+      const seconds = timeDifference / 1000;
+      tempo = 1 / seconds * 60;
+      changeInputValue(tempo);
+    }
+    previousTime = now;
+}
+
+function changeInputValue(tempo) {
+  var inputElement = document.getElementById("myText");
+  inputElement.value = Math.round(tempo);
+}
 
 document.addEventListener('keypress', (event) => {
   var keyCode = event.code;
@@ -20,4 +45,4 @@ document.addEventListener('keypress', (event) => {
   if (keyCode === 'Digit5') {
     play_sound("Crossaint");
   }
-});2
+});
