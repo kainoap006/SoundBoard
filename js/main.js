@@ -8,6 +8,7 @@
 // 
 
 import { play_sound, find_tempo } from "./helperFunctions.js";
+import { toggleRecording } from "./tuner.js";
 
 window.addEventListener('DOMContentLoaded', event => {
 
@@ -66,5 +67,11 @@ document.addEventListener("click", e => {
 document.addEventListener("click", e => {
   if (e.target.matches("button[tempo]")) {
     find_tempo();
+  }
+});
+
+document.addEventListener("click", e => {
+  if (e.target.matches("button[mic]")) {
+    toggleRecording();
   }
 });
